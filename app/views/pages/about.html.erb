@@ -1,0 +1,12 @@
+<h2 class="h4 mt-4">Database Tables</h2>
+<ul>
+  <li><strong>divisions</strong>: name, conference</li>
+  <li><strong>teams</strong>: name, abbrev, wins, losses, ot_losses, points, logo_url, division_id (FK)</li>
+  <li><strong>players</strong>: nhl_id, first_name, last_name, sweater_number, position_code, height_inches, weight_pounds, birth_date, birth_country, headshot_url, team_id (FK)</li>
+  <li><strong>fans</strong>: name, email, city (Faker)</li>
+  <li><strong>team_follows</strong>: fan_id (FK), team_id (FK), join table</li>
+  <li><strong>player_follows</strong>: fan_id (FK), player_id (FK), join table</li>
+</ul>
+
+<h2 class="h4 mt-4">ERD</h2>
+<%= image_tag "erd.png", alt: "Entity relationship diagram of the NHL app database", class: "img-fluid border mb-5" %>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  abbrev: MyString
+  wins: 1
+  losses: 1
+  ot_losses: 1
+  points: 1
+  logo_url: MyString
+  division: one
+
+two:
+  name: MyString
+  abbrev: MyString
+  wins: 1
+  losses: 1
+  ot_losses: 1
+  points: 1
+  logo_url: MyString
+  division: two

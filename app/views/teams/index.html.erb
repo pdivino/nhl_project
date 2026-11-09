@@ -1,0 +1,13 @@
+<h1>NHL Teams</h1>
+<div class="row">
+  <% @teams.each do |team| %>
+    <div class="col-md-3 mb-4">
+      <div class="card h-100 text-center p-3">
+        <img src="<%= team.logo_url %>" alt="<%= team.name %> logo" class="card-img-top" style="height:100px">
+        <h2 class="h5 mt-2"><%= link_to team.name, team_path(team) %></h2>
+        <p class="mb-1"><%= link_to team.division.name, division_path(team.division) %> Division</p>
+        <p class="mb-0"><%= team.wins %>-<%= team.losses %>-<%= team.ot_losses %> | <%= team.points %> pts</p>
+      </div>
+    </div>
+  <% end %>
+</div>

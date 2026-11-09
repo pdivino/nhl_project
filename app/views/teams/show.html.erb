@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-4 text-center">
+    <img src="<%= @team.logo_url %>" alt="<%= @team.name %> logo" style="height:180px">
+  </div>
+  <div class="col-md-8">
+    <h1><%= @team.name %> (<%= @team.abbrev %>)</h1>
+    <p>Division: <%= link_to @team.division.name, division_path(@team.division) %> (<%= @team.division.conference %> Conference)</p>
+    <p>Record: <%= @team.wins %> W - <%= @team.losses %> L - <%= @team.ot_losses %> OTL | <strong><%= @team.points %> points</strong></p>
+    <p>Followed by <%= @team.fans.count %> fans</p>
+  </div>
+</div>
+
+<h2 class="mt-4">Roster</h2>
+<% if @players.any? %>
+  <table class="table table-striped">
+    <thead><tr><th>#</th><th>Name</th><th>Position</th><th>Country</th></tr></thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= player.sweater_number %></td>
+          <td><%= link_to player.full_name, player_path(player) %></td>
+          <td><%= player.position_code %></td>
+          <td><%= player.birth_country %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No players on this roster.</p>
+<% end %>

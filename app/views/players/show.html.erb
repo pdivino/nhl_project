@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-3">
+    <img src="<%= @player.headshot_url %>" alt="<%= @player.full_name %>" class="img-fluid">
+  </div>
+  <div class="col-md-9">
+    <h1><%= @player.full_name %></h1>
+    <p>Team: <%= link_to @player.team.name, team_path(@player.team) %></p>
+    <p>Division: <%= link_to @player.team.division.name, division_path(@player.team.division) %></p>
+    <p>Position: <%= @player.position_code %></p>
+    <p>Number:
+      <% if @player.sweater_number %>
+        #<%= @player.sweater_number %>
+      <% else %>
+        Not assigned yet
+      <% end %>
+    </p>
+    <p>Height: <%= @player.height_inches.to_i / 12 %>' <%= @player.height_inches.to_i % 12 %>" | Weight: <%= @player.weight_pounds %> lbs</p>
+    <p>Born: <%= @player.birth_date %> in <%= @player.birth_country %></p>
+
+    <h2 class="h4 mt-4">Fans following this player</h2>
+    <% if @player.fans.any? %>
+      <ul>
+        <% @player.fans.each do |fan| %>
+          <li><%= fan.name %> (<%= fan.city %>)</li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No fans yet.</p>
+    <% end %>
+  </div>
+</div>

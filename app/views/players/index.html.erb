@@ -1,0 +1,36 @@
+<h1>All Players</h1>
+
+<%= form_with url: players_path, method: :get, class: "row g-2 mb-4" do |f| %>
+  <div class="col-md-5">
+    <%= f.label :q, "Player name", class: "visually-hidden" %>
+    <%= f.text_field :q, value: params[:q], placeholder: "Search player name...", class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :division_id, "Division", class: "visually-hidden" %>
+    <%= f.select :division_id,
+          options_from_collection_for_select(@divisions, :id, :name, params[:division_id]),
+          { include_blank: "All divisions" }, class: "form-select" %>
+  </div>
+  <div class="col-md-3">
+    <%= f.submit "Search", class: "btn btn-primary w-100", name: nil %>
+  </div>
+<% end %>
+
+<% if @players.any? %>
+  <table class="table table-striped">
+    <thead><tr><th>Name</th><th>Team</th><th>Position</th><th>#</th></tr></thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= link_to player.full_name, player_path(player) %></td>
+          <td><%= link_to player.team.name, team_path(player.team) %></td>
+          <td><%= player.position_code %></td>
+          <td><%= player.sweater_number %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @players %>
+<% else %>
+  <p>No players found.</p>
+<% end %>

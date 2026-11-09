@@ -1,0 +1,11 @@
+<h1>Divisions</h1>
+<div class="row">
+  <% @divisions.each do |division| %>
+    <div class="col-md-6 mb-3">
+      <div class="card p-3">
+        <h2 class="h4"><%= link_to division.name, division_path(division) %></h2>
+        <p class="mb-0"><%= division.conference %> Conference | <%= division.teams.count %> teams</p>
+      </div>
+    </div>
+  <% end %>
+</div>
